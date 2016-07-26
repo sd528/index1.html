@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#clock{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 200px auto;
+			position: relative;
+			-webkit-border-radius: 50%;
+		}
+		#dial{
+			list-style: none;
+			/*position: relative;*/
+		}
+		#dial li{
+			width: 2px;
+			height: 5px;
+			background: #000;
+			position: absolute;
+			left: 100px;
+			-webkit-transform-origin: 0 100px;
+		}
+		#dial li:nth-child(5n + 1){
+			height: 10px;
+		}
+		#hour{
+			width: 6px;
+			height: 40px;
+			background: #000;
+			position: absolute;
+			left: 97px;
+			top: 60px;
+			-webkit-transform-origin: bottom;
+		}
+		#minute{
+			width: 6px;
+			height: 60px;
+			background: #000;
+			position: absolute;
+			left: 97px;
+			top: 40px;
+			-webkit-transform-origin: bottom;
+		}
+		#seconds{
+			width: 2px;
+			height: 80px;
+			background: #f00;
+			position: absolute;
+			left: 99px;
+			top: 20px;
+			-webkit-transform-origin: bottom;
+		}
+	</style>
+</head>
+<body>
+	<div id="clock">
+		<ul id="dial"></ul>
+		<div id="hour"></div>
+		<div id="minute"></div>
+		<div id="seconds"></div>
+	</div>
+
+	<script>
+		var oDial = document.getElementById('dial'),
+			oHour = document.getElementById('hour'),
+			oMinute = document.getElementById('minute'),
+			oSeconds = document.getElementById('seconds');
+		var html = '';
+		for(var i=0; i<60; i++){
+			html += '<li style="-webkit-transform:rotate('+ i*6 +'deg);"></li>';
+		}
+		oDial.innerHTML = html;
+
+		function run(){
+			var now = new Date();
+			var seconds = now.getSeconds(),
+				minute = now.getMinutes(),
+				hour = now.getHours();
+			oHour.style.WebkitTransform = 'rotate('+ hour * 30 + minute/60*30 +'deg)';
+			oMinute.style.WebkitTransform = 'rotate('+ minute * 6 +'deg)';
+			oSeconds.style.WebkitTransform = 'rotate('+ seconds * 6 +'deg)';
+		}
+		run();
+		setInterval(run, 1000);
+	</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
