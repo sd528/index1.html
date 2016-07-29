@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>zhaopianqiang</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body,html{
+			width: 100%;
+			height: 1000px;
+			background: #ccc;
+		}
+		img{	
+			border: 10px solid white;
+		}
+		#img{
+			width: 400px;
+			height: 300px;
+			margin: 200px auto;
+			position: relative;
+		}
+		#img img{
+			box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+			position: absolute;
+			-webkit-transition: all 1s ease;
+		}
+		#img img:nth-child(1){
+			-webkit-transform:rotate(15deg);
+		}
+		#img img:nth-child(2){
+			-webkit-transform:rotate(-15deg);
+		}
+		#img img:hover{
+			-webkit-transform:scale(1.5) rotate(0deg);
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="img">
+		<img src="不是的.jpg">
+		<img src="不是的.jpg">
+	</div>
+</body>
+</html>
