@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		#tab .first-level{
+			float: left;
+			width: 100px;
+			height: 20px;
+			background: #ccc;
+			text-align: center;
+			line-height: 20px;
+			margin-right: 2px;
+			background: url(arrow.jpg) no-repeat right 3px;
+			border: 1px solid #000;
+		}
+		#tab .sub-level{
+			border: 1px solid gray;
+			display: none;
+		}
+
+		#tab .sub-level li:hover{
+			background: #ccc;
+			color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div id="container">
+		<ul id="tab">
+			<li class="first-level">item1
+				<ul class="sub-level">
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+				</ul>
+			</li>
+			<li class="first-level">item2
+				<ul class="sub-level">
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+				</ul>
+			</li>
+			<li class="first-level">item3
+				<ul class="sub-level">
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+				</ul>
+			</li>
+			<li class="first-level">item4
+				<ul class="sub-level">
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+	<script>
+		var oTab = document.getElementById('tab');
+		var aLiFirstLevel = oTab.getElementsByTagName('li');
+		for(var i=0; i<aLiFirstLevel.length; i++){
+			aLiFirstLevel[i].onmouseover = function(){
+				var oUlSubLevel = this.getElementsByTagName('ul')[0];
+				oUlSubLevel.style.display = 'block';
+				this.style.backgroundPosition = 'right -12px';
+			};
+			aLiFirstLevel[i].onmouseout = function(){
+				var oUlSubLevel = this.getElementsByTagName('ul')[0];
+				oUlSubLevel.style.display = 'none';
+				this.style.backgroundPosition = 'right 3px';
+			};
+		}
+	</script>
+</body>
+</html>
