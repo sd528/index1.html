@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>gfgfd</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: relative;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<button id="button">button</button>
+	<script type="text/javascript">
+		var oDiv = document.getElementById('div1');
+		var oBtu = document.getElementById('button');
+		var speed = 20;
+		var timer = 0;
+		oBtu.onclick = function(){
+			// clearInterval(timer);
+			timer = setInterval(function(){
+				if(oDiv.offsetLeft >= 500){
+					clearInterval(timer);
+					timer = setInterval(function(){
+						if(oDiv.offsetLeft <= 0){
+							clearInterval(timer);
+							oDiv.style.left = oDiv.offsetLeft + speed +'px';
+						}
+						oDiv.style.left = oDiv.offsetLeft - speed +'px';
+					},30);
+				}
+				oDiv.style.left = oDiv.offsetLeft + speed +'px';
+			},30);
+		};
+	</script>
+</body>
+</html>
